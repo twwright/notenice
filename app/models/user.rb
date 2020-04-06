@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 	validates :password, length: { in: 6..20 }
 	validates :terms_of_service, acceptance: true
+	acts_as_birthday :birthday
 end
 
 
