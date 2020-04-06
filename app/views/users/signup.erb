@@ -1,0 +1,32 @@
+<h2>Create a New Account</h2>
+<br>
+<form method="post" action="/signup">
+<label>Username:</label><br>
+<input type="text" name="username"><br>
+<br>
+<label>Password:</label><br>
+<input type="password" name="password"><br>
+<br>
+<label>Email:</label><br>
+<input type="text" name="email"><br>
+<br>
+<label>Name:</label><br>
+<input type="text" name="name"><br>
+<br>
+<label>Birthdate:</label><br>
+<input type="date" name="birthday"><br>
+<br>
+<input type="hidden" name="terms_of_service" value="false">
+<input type="checkbox" name="terms_of_service"> I agree that SideExpect is not to be used in any medical capacity.<br>
+<br>
+<input type="submit" class="btn">
+<br>
+<br>
+<% if @failure_message %>
+	<div id="failure" style="border: 2px solid red;">
+	<% @failure_message.each do |key, value| %>
+		<p><%= "#{key.capitalize} #{value[0]}." %> </p>
+		<% end %>	
+	</div>
+<% end %>
+</form>
