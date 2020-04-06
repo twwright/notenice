@@ -5,5 +5,6 @@ class CreateSideEffects < ActiveRecord::Migration
 		t.text :description
 		t.integer :user_id
 		t.integer :drug_id
+	end
   end
 end

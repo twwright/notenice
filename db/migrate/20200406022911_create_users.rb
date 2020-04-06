@@ -7,5 +7,6 @@ class CreateUsers < ActiveRecord::Migration
 		t.datetime :birthday
 		t.string :password_digest
 		t.boolean :terms_of_service
+	end
   end
 end

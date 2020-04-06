@@ -4,5 +4,6 @@ class CreateDrugs < ActiveRecord::Migration
 		t.string :name
 		t.integer :dosage
 		t.string :dosage_unit
+	end
   end
 end
