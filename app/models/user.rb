@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
-	has_many :drugs
-	has_many :side_effects, through :drugs
+	has_many :side_effects
+	has_many :drugs, through :side_effects
 	has_secure_password
+
+end
 	# validates :username, presence: true, uniqueness: true, length: { minimum: 3 }
 	# validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 	# validates :password, length: { in: 6..20 }
@@ -13,4 +15,3 @@ class User < ActiveRecord::Base
 	# def has_side_effect?(side_effect)
 		# returns true when the user has the side effect
 	# end
-end

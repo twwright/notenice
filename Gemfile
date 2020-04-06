@@ -12,6 +12,13 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 
+group :development do
+	gem 'tux'
+	gem 'pry'
+	gem 'shotgun'
+	gem 'sqlite3', '~> 1.3.6'
+end
+
 group :test do
   gem 'rspec'
   gem 'capybara'
