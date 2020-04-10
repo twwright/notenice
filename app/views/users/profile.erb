@@ -1,0 +1,8 @@
+<% if @user %>
+	<h1>Welcome <%= @user.username %></h1>
+	<h3>Drugs: <% @drugs.each do |drug| %></h3>
+		<ul>
+			<li><%= drug.name %>: <emphasis><%= drug.side_effect %></emphasis></li>
+		</ul><% end %>
+<% end %>
+	<h4><a href="/logout">Log Out</a></h4>

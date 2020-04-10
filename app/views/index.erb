@@ -1,0 +1,15 @@
+<p align="center"><h1>Welcome to SideExpect.</h1>
+	<h2>Keep track of your side effects to medications, as well as see what others experience! </h2>
+<br>
+	<h3>Log In Please</h3>
+	<form method="post" action="/login">
+	<input type="text" name="username" placeholder="Username">
+	<input type="password" name="password" placeholder="password">
+	<input type="submit">
+	</form>
+	<br>
+	<br>
+	<% if @failure_message != nil %>
+	<div id="failure_message" style="border: 2px solid red;">
+		<h3> Invalid log-in. Please try again. </h3>
+	<% end %>	

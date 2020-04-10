@@ -1,0 +1,29 @@
+<% if @success_message != nil %>
+	<div id="success" style="border: 2px solid green;">
+		<h3> Your account has been created successfully! </h3>
+<% end %>	
+	</div>
+
+	<h1>Add a New Drug</h1>
+
+	<form action="/drugs" method="POST">
+	  <label>Drug Name:</label>
+	  <input type="text" name="drug[name]" id="drug_name">
+	
+	  <br>
+	  <p>Select an existing side-effect or create a new one below.</p>
+	
+	
+	  <h3>Existing Side Effects</h3>
+	  <% Drug.all.each do |drug| %>
+		 <input type="radio" name="drug[side_effect]" id="drug_side_effect" value="<%= drug.side_effect %>"><%= drug.side_effect %></input><br>
+	  <% end %>
+	  <br>
+	
+	  <h3>New Side-Effect</h3>
+	  <label>Side-Effect Description: </label>
+	  <input type="text" name="drug[side_effect]" id="drug_side_effect"></input>
+	  <br><br>
+		<input type="hidden" name="drug[user_id]" id="<%= @user.id %>" value="<%= @user.id %>">
+	  <input type="submit" value="Create Drug">
+	</form>
