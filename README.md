@@ -6,3 +6,6 @@ __SideExpect__ is a web app for Flatiron School written in Ruby using Sinatra wi
 ### _Want to play with the code?_
 This project is open sourced and code-ready on Gitpod.
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/twwright/sideexpect) 
+
+### Want to read about SideExpect?
+For more information on the creation and design of __SideExpect__ check out [this post](https://writemd.xyz/d/5e9366734d1ea5935).
