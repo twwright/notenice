@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-#WELCOME USER PAGE
-	get "/users" do
-		erb :"/users/index"
-	end
-
 #CREATE NEW USER PAGE
 	get "/users/new" do
 		if !!session[:user_id]
@@ -30,13 +25,11 @@ class UsersController < ApplicationController
 		end
 	end
 
-#LOG IN USER PAGE MISSING?!
-
 #LOG IN USER FORM SUBMISSION
 	post '/login' do
-		@user = User.find_by(username: params[:username])
-		if @user != nil && @user.password == params[:password]
-			session[:user_id] = @user.id
+		@user = User.find_by(:username => params[:username])
+	 	if @user && @user.authenticate(params[:password])
+			session[:user_id] = @user.id 
 			redirect to '/drugs/new'
 		else 
 			session[:failure_message] = []
@@ -47,12 +40,16 @@ class UsersController < ApplicationController
 
 #VIEW USER'S PROFILE PAGE
   get "/users/profile" do
-	@user = User.find_by_id(session[:user_id])
-	@drugs = Drug.where(user_id: session[:user_id]) 
-	if @user
-		erb :"/users/profile"
-	else 
-		erb :new
+	if logged_in?
+		@user = User.find_by_id(session[:user_id])
+		if @user
+			@drugs = Drug.where(user_id: session[:user_id]) 
+			erb :"/users/profile"
+		else 
+			erb :new
+		end
+	else
+		redirect to "/users/new"
 	end
   end
 
