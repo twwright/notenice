@@ -9,7 +9,16 @@
 	<form action="/drugs" method="POST">
 	  <label>Drug Name:</label>
 	  <input type="text" name="drug[name]" id="drug_name">
+	  <br>
+	  <br>
+	  <label>Dosage:</label>
+	  <input type="text" name="drug[dosage]" id="drug_dosage">
+	  <br>
+	  <br>
+	  <label>Purpose of the Drug:</label><br>
+	  <textarea type="text" name="drug[purpose]"></textarea>
 	
+	  <br>
 	  <br>
 	  <!--<p>Select all the side-effects you have experienced, or create a new one below.</p>
 	
@@ -24,7 +33,7 @@
 	  <label>Side-Effect Description: </label>
 	  <input type="text" name="drug[side_effect][]" id="drug_side_effect"></input>
 	  <br><br> -->
-	  <label for>Log this drug?</label>
+	  <label for>Would you like to log this drug?</label>
 	 	<input type="hidden" name="drug[user_id]" value="nil" />
 		<input type="checkbox" name="drug[user_id]" value="<%= @user.id %>"><br>
 	  <input type="submit" value="Create Drug">
