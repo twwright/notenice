@@ -39,29 +39,29 @@ class UsersController < ApplicationController
 	end
 
 #VIEW USER'S PROFILE PAGE
-  get "/users/profile" do
-	if logged_in?
-		@user = User.find_by_id(session[:user_id])
-		if @user
-			@drugs = Drug.where(user_id: session[:user_id]) 
-			erb :"/users/profile"
-		else 
-			erb :new
+	get "/users/profile" do
+		if logged_in?
+			@user = User.find_by_id(session[:user_id])
+			if @user
+				@drugs = Drug.where(user_id: session[:user_id]) 
+				erb :"/users/profile"
+			else 
+				erb :new
+			end
+		else
+			redirect to "/users/new"
 		end
-	else
-		redirect to "/users/new"
 	end
-  end
 
 #EDIT USER'S PROFILE PAGE
-  get "/users/:id/edit" do
-	 erb :"/users/edit"
-  end
+	get "/users/:id/edit" do
+		erb :"/users/edit"
+	end
 
 #EDIT USER'S PROFILE PAGE SUBMISSION
-  patch "/users/:id" do
-	 redirect "/users/:id"
-  end
+	patch "/users/:id" do
+		redirect "/users/:id"
+	end
 
 #LOG OUT OF PROFILE
 	get '/logout' do
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
 	end
 
 #DELETE USER'S PROFILE
-  delete "/users/:id/delete" do
-	 redirect "/users"
-  end
+	delete "/users/:id/delete" do
+		redirect "/users"
+	end
 end
