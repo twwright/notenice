@@ -1,12 +1,19 @@
 <p align="center"><h1>Welcome to SideExpect.</h1>
 	<h2>Keep track of your side effects to medications, as well as see what others experience! </h2>
 <br>
+<br>
+	<% if logged_in? %>
+		<h3>How is your day going? Good, I hope!</h3>
+	<% else %>
 	<h3>Log In Please</h3>
 	<form method="post" action="/login">
 	<input type="text" name="username" placeholder="Username">
 	<input type="password" name="password" placeholder="password">
 	<input type="submit">
 	</form>
+	<br>
+	<h3><a href="/users/new">Sign Up Now</a></h3>
+	<% end %>
 	<br>
 	<br>
 	<% if @failure_message != nil %>
