@@ -2,10 +2,12 @@ class DrugsController < ApplicationController
 
 #VIEW ALL DRUGS
   get "/drugs" do
+	@drugs = Drug.all
+	binding.pry
     erb :"/drugs/index"
   end
 
-#ADD A NEW DRUG
+# ADD A NEW DRUG
   get "/drugs/new" do
 	if !!session[:user_id]
 		@success_message = session[:creation_successful]
@@ -13,14 +15,14 @@ class DrugsController < ApplicationController
 		@user = User.find(session[:user_id])
 		erb :"/drugs/new"
 	else
-		erb :"/users/new"
+		redirect to "/"
 	end
   end
 
-#ADD A NEW DRUG SUBMISSION
+# ADD NEW DRUG
 	post "/drugs" do
 		binding.pry
-		@drug = Drug.create(name: params[:drug][:name], side_effect: params[:drug][:side_effect], user_id: params[:drug][:user_id])
+		@drug = Drug.create(params[:drug])
 		#if !params[:drug][:side_effect].empty?
 		#  @drug.user = Owner.create(name: params[:owner][:name])
 		#end
@@ -28,19 +30,19 @@ class DrugsController < ApplicationController
 		redirect to "drugs/#{@drug.id}"
 	end
 
-#VIEW A SPECIFIC DRUG
+# VIEW A SPECIFIC DRUG
   get "/drugs/:id" do
 	@drug = Drug.find(params[:id])
-	binding.pry
 	erb :'/drugs/show'
   end
 
-#EDIT A SPECIFIC DRUG
+
+# LOG DRUG WITH YOUR SIDE-EFFECTS
   get "/drugs/:id/edit" do
     erb :"/drugs/edit"
   end
 
-#EDIT A SPECIFIC DRUG SUBMISSION
+# LOG DRUG WITH YOUR SIDE-EFFECTS SUBMISSION
   patch "/drugs/:id" do
     redirect "/drugs/:id"
   end
