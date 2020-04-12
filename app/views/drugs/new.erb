@@ -11,19 +11,21 @@
 	  <input type="text" name="drug[name]" id="drug_name">
 	
 	  <br>
-	  <p>Select an existing side-effect or create a new one below.</p>
+	  <!--<p>Select all the side-effects you have experienced, or create a new one below.</p>
 	
 	
-	  <h3>Existing Side Effects</h3>
+	  <h3>Common Side Effects</h3>
 	  <% Drug.all.each do |drug| %>
-		 <input type="radio" name="drug[side_effect]" id="drug_side_effect" value="<%= drug.side_effect %>"><%= drug.side_effect %></input><br>
+		 <input type="checkbox" name="drug[side_effect][]" id="drug_side_effect" value="<%= drug.side_effect %>"><%= drug.side_effect %></input><br>
 	  <% end %>
 	  <br>
 	
 	  <h3>New Side-Effect</h3>
 	  <label>Side-Effect Description: </label>
-	  <input type="text" name="drug[side_effect]" id="drug_side_effect"></input>
-	  <br><br>
-		<input type="hidden" name="drug[user_id]" id="<%= @user.id %>" value="<%= @user.id %>">
+	  <input type="text" name="drug[side_effect][]" id="drug_side_effect"></input>
+	  <br><br> -->
+	  <label for>Log this drug?</label>
+	 	<input type="hidden" name="drug[user_id]" value="nil" />
+		<input type="checkbox" name="drug[user_id]" value="<%= @user.id %>"><br>
 	  <input type="submit" value="Create Drug">
 	</form>
