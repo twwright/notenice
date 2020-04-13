@@ -4,25 +4,17 @@
 <% end %>	
 	</div>
     <fieldset>
-	<legend>Add a New Note</legend
+	<legend>Add a New Note</legend>
 
-	<form action="/notes" method="POST">
+	<form method="post" action="/notes" id="new_note">
     
-    <h3>Note Topic:</h3>
-    <!-- <label>Existing Topic:</label>
-	  <% @note.all.each do |note| %>
-		 <input type="radio" name="note[topic]" id="note_topic" value="<%= note.topic %>"><%= note.topic %></input><br>
-	  <% end %>
-	  <br> -->
-	
-	<label>New Topic: </label>
-	  <input type="text" name="note[topic]" id="note_topic"></input>
-	  <br>
-	  <br>
+	<label><h3>Note Topic:</h3></label>
+	<input type="text" name="note[topic]" id="note_topic"></input>
       
-    <label>Notes:</label><br>
-      <textarea type="text" name="note[content]"></textarea>
+    <label><h3>Notes:</h3></label>
+    <textarea type="text" name="note[content]"></textarea>
       
-    <input type="submit" value="Create note"> 
+    <input type="submit" form="new_note" value="Create note">
+
     </form>
     </fieldset>

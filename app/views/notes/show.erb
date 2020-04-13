@@ -1,5 +1,5 @@
 <h1><%= @note.topic %></h1>
-<h3><%= markdown(@note.content) %></h3>
+<%= markdown(@note.content) %>
 
 <a href="/notes/<%= @note.id %>/edit">Edit note</a> | <a href="/notes/<%= @note.id %>/confirm-delete">Delete note</a>
 <!-- <% if @confirm_delete %>
