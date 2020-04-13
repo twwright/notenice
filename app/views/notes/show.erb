@@ -1,0 +1,9 @@
+<h1><%= @note.topic %></h1>
+<h3><%= markdown(@note.content) %></h3>
+
+<a href="/notes/<%= @note.id %>/edit">Edit note</a> | <a href="/notes/<%= @note.id %>/confirm-delete">Delete note</a>
+<!-- <% if @confirm_delete %>
+<div id="confirm-delete" style="border: 2px solid red;">
+Are you sure you want to delete this note?<br>
+<a href="/notes/<%= @note.id %>/delete">Yes, delete note</a> | <a href="/notes/<%= @note.id %>">No, nevermind</a>
+<% end %> -->

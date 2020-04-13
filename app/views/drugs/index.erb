@@ -1,8 +1,0 @@
-<h1>All Drug List</h1>
-<h2> Select a drug below to see information, or create a new one.</h2>
-<ul><% @drugs.each do |drug| %>
-<li><a href="/drugs/<%= drug.id %>"><%= drug.name %></a></li>
-</ul><% end %>
-<br>
-<h3><a href="/drugs/new">Create a New Drug</a></h3>
-

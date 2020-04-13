@@ -1,0 +1,28 @@
+<% if @success_message != nil %>
+	<div id="success" style="border: 2px solid green;">
+		<h3> Your account has been created successfully! </h3>
+<% end %>	
+	</div>
+    <fieldset>
+	<legend>Add a New Note</legend
+
+	<form action="/notes" method="POST">
+    
+    <h3>Note Topic:</h3>
+    <!-- <label>Existing Topic:</label>
+	  <% @note.all.each do |note| %>
+		 <input type="radio" name="note[topic]" id="note_topic" value="<%= note.topic %>"><%= note.topic %></input><br>
+	  <% end %>
+	  <br> -->
+	
+	<label>New Topic: </label>
+	  <input type="text" name="note[topic]" id="note_topic"></input>
+	  <br>
+	  <br>
+      
+    <label>Notes:</label><br>
+      <textarea type="text" name="note[content]"></textarea>
+      
+    <input type="submit" value="Create note"> 
+    </form>
+    </fieldset>

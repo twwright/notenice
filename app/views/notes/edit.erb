@@ -1,0 +1,26 @@
+	<h1>Update <%= @note.topic %></h1>
+
+    <fieldset>
+	<legend>Update Note</legend
+
+	<form action="/notes/<%= @note.id %>" method="POST">
+	<input type="hidden" name="_method" value="PATCH">
+    
+    <h3>Note Topic:</h3>
+    <!-- <label>Existing Topic:</label>
+	  <% @note.all.each do |note| %>
+		 <input type="radio" name="note[topic]" id="note_topic" value="<%= note.topic %>"><%= note.topic %></input><br>
+	  <% end %>
+	  <br> -->
+	
+	<label>New Topic: </label>
+	  <input type="text" name="note[topic]" id="note_topic"></input>
+	  <br>
+	  <br>
+      
+    <label>Notes:</label><br>
+      <textarea type="text" name="note[content]"></textarea>
+      
+    <input type="submit" value="Create note"> 
+    </form>
+    </fieldset>

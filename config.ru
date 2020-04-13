@@ -6,7 +6,7 @@ end
 
 use Rack::MethodOverride
 
-use DrugsController
+use NotesController
 use UsersController
 run ApplicationController
 

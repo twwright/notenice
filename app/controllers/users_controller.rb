@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 #CREATE NEW USER PAGE
 	get "/users/new" do
 		if !!session[:user_id]
-			redirect '/drugs'
+			redirect '/notes'
 		else
 			@failure_message = session[:failure_message]
 			session[:failure_message] = nil
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 				session[:user_id] = user.id
 				session[:creation_successful] = []
 				session[:creation_successful] << "Account created successfully!"
-				redirect '/drugs/new'
+				redirect '/notes/new'
 		else 
 				session[:failure_message] = user.errors.messages
 				redirect '/users/new'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 		@user = User.find_by(:username => params[:username])
 	 	if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id 
-			redirect to '/drugs/new'
+			redirect to '/notes/new'
 		else 
 			session[:failure_message] = []
 			session[:failure_message] << "Failure"
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 		if logged_in?
 			@user = User.find_by_id(session[:user_id])
 			if @user
-				@drugs = Drug.where(user_id: session[:user_id]) 
+				@notes = Note.where(user_id: session[:user_id]) 
 				erb :"/users/profile"
 			else 
 				erb :new
