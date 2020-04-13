@@ -43,7 +43,6 @@ class NotesController < ApplicationController
 
 # UPDATE A DRUG 
 	patch "/notes/:id" do
-		binding.pry
 		@note = Note.find(params[:id])
 		@note.update(params[:note])
 		redirect to "/notes/#{ @note.id }"
