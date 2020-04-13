@@ -4,5 +4,6 @@ class CreateNotes < ActiveRecord::Migration
         t.string :topic
         t.text :content
         t.integer :user_id
+    end
   end
 end

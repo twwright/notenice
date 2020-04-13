@@ -5,6 +5,6 @@ class CreateUsers < ActiveRecord::Migration
         t.string :name 
         t.text :profile
         t.string :password_digest
-        t.boolean :terms_of_service
+    end
   end
 end
