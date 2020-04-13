@@ -4,6 +4,10 @@ body {
 	 margin-top: 80px;
 	 padding: 40px;
  }
+
+ h1, h2, h3, h4 {
+	 font-family: 'Baloo 2', cursive;
+ }
  
  header {
 	 background-color: white;
@@ -35,7 +39,30 @@ body {
 	 font-size: 24px;
  }
  
- header li a:hover {
-	 background-color: rgb(161, 161, 161);
+ a:hover {
+	background-color: rgb(161, 161, 161);
+	color: #161f27;
 	text-decoration: none;
  }
+
+ #footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	height: 40px;
+	background: #222;
+	color: white;
+ }
+
+ .copyright {
+	float: left;
+	padding: 0px 30px;
+	margin: 10px;
+}
+
+.social { 
+	float: right;
+	padding: 0px 30px;
+	margin: 10px;
+}

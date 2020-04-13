@@ -12,7 +12,7 @@
   </head>
 	<body>
 		<header>
-			<a href="/">SideExpect</h1></a>
+			<ul><li><a href="/">SideExpect //</a></li></ul>
 			<nav>
 				<ul>
 					<li><a href="/">Home</a></li>
@@ -30,8 +30,10 @@
 		<main>
 			<%= yield %>
 		</main>
-		<footer>
-			<small>&copy; 2020 <strong>SideExpect</strong></small>
-		</footer>
+		<div id="footer">
+			<h3 class="copyright">&copy; 2020 <strong>SideExpect</strong></h3>
+			<h3 class="social"><a href="http://github.com/twwright/sideexpect">GitHub</a> | <a href="https://writemd.xyz/d/5e9366734d1ea5935">About</a></h3>
+			<div style="clear: both"></div>
+	  </div>
 	</body>
 </html>

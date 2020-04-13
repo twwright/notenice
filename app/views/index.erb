@@ -1,10 +1,10 @@
-<h1>Welcome to SideExpect.</h1>
-	<h2>Keep track of your side effects to medications, as well as see what others experience! </h2>
-<br>
-<br>
 	<% if @logged_in %>
-		<h3>How is your day going? Good, I hope!</h3>
+	<h1>Welcome back!</h1>
+	<h2>Would you like to visit <a href="/users/profile">My Profile</a> or <a href="/drugs/new">Add a Drug</a>?</h2>
 	<% else %>
+	<h1>Welcome to SideExpect.</h1>
+	<h2>Keep track of your side effects to medications, as well as see what others experience! </h2>
+	<br>
 	<fieldset>
 	<legend>Log In</legend>
 	<form method="post" action="/login">
@@ -15,12 +15,10 @@
 	<input type="submit">
 	</form>
 	</fieldset>
-	<br>
-	<h3><a href="/users/new">Sign Up Now</a></h3>
-	<% end %>
-	<br>
-	<br>
 	<% if @failure_message != nil %>
 	<div id="failure_message" style="border: 2px solid red;">
 		<h3> Invalid log-in. Please try again. </h3>
-	<% end %>	
+	<% end %>
+	<br>
+	<h3><a href="/users/new">Sign Up Now</a></h3>
+	<% end %>
