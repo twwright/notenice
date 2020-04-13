@@ -1,8 +1,8 @@
 <% if @user %>
 	<h1>Welcome <%= @user.username %></h1>
-	<h2>Drugs: <% @drugs.each do |drug| %></h3>
+	<h2>Notes: <% @notes.each do |drug| %></h3>
 		<ul>
-			<li><%= drug.name %></li>
+			<li><%= note.topic %></li>
 		</ul><% end %>
 <% end %><br>
 	<h3><a href="/logout">Log Out</a></h4>
