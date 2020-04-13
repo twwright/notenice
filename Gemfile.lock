@@ -53,6 +53,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (13.0.1)
+    redcarpet (3.5.0)
     regexp_parser (1.7.0)
     require_all (3.0.0)
     ripl (0.7.1)
@@ -111,10 +112,12 @@ DEPENDENCIES
   activerecord (~> 4.2, >= 4.2.6)
   bcrypt
   capybara
+  coderay
   database_cleaner
   pry
   rack-test
   rake
+  redcarpet
   require_all
   rspec
   shotgun

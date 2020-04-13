@@ -11,6 +11,8 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'redcarpet'
+gem 'coderay'
 
 group :test do
   gem 'rspec'
