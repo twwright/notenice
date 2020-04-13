@@ -5,36 +5,33 @@
 
     <title>SideExpect</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Fugaz+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.min.css">
+	 <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Open+Sans&display=swap" rel="stylesheet">
+	 <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
   </head>
 	<body>
 		<header>
-		<div class="branding"><a href="/"><h1>SideExpect</h1></a></div>
-		  <nav class="menu-nav">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/drugs">All Drugs</a></li>
+			<a href="/">SideExpect</h1></a>
+			<nav>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/drugs">All Drugs</a></li>
 				<% if logged_in? %>
-				<li><a href="/users/profile">My Profile</a></li> 
-				<li><a href="/logout">Log Out</a></li> 
+					<li><a href="/users/profile">My Profile</a></li> 
+					<li><a href="/logout">Log Out</a></li> 
 				<% else %>
-				<li><a href="/users/new">Sign Up</a></li>
+					<li><a href="/users/new">Sign Up</a></li>
 				<% end %>
-				<% #if signed in, view profile / if not signed in, sign up or log in %>
-			</ul>
-		  </nav>
+					<% #if signed in, view profile / if not signed in, sign up or log in %>
+				</ul>
+			</nav>
 		</header>
-    <div class="wrapper">
-
-        <%= yield %>
-
-	 </div>
-      <footer class="footer">
-        <small>&copy; 2020 <strong>SideExpect</strong></small>
-      </footer>
-    </div>
-
-  </body>
+		<main>
+			<%= yield %>
+		</main>
+		<footer>
+			<small>&copy; 2020 <strong>SideExpect</strong></small>
+		</footer>
+	</body>
 </html>

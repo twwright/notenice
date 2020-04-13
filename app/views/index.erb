@@ -1,16 +1,20 @@
-<p align="center"><h1>Welcome to SideExpect.</h1>
+<h1>Welcome to SideExpect.</h1>
 	<h2>Keep track of your side effects to medications, as well as see what others experience! </h2>
 <br>
 <br>
-	<% if logged_in? %>
+	<% if @logged_in %>
 		<h3>How is your day going? Good, I hope!</h3>
 	<% else %>
-	<h3>Log In Please</h3>
+	<fieldset>
+	<legend>Log In</legend>
 	<form method="post" action="/login">
-	<input type="text" name="username" placeholder="Username">
+	<label for="username">Username</label>
+	<input type="text" name="username" placeholder="username">
+	<label for="password">Password</label>
 	<input type="password" name="password" placeholder="password">
 	<input type="submit">
 	</form>
+	</fieldset>
 	<br>
 	<h3><a href="/users/new">Sign Up Now</a></h3>
 	<% end %>
