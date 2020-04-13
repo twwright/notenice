@@ -20,7 +20,6 @@ class NotesController < ApplicationController
 
 # ADD NEW DRUG
     post "/notes" do
-        binding.pry
         @note = Note.create(params[:note])
 		#if !params[:note][:side_effect].empty?
 		#	@note.user = Owner.create(name: params[:owner][:name])

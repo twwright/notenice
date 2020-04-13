@@ -1,8 +1,7 @@
-<h1>All Notes</h1>
-<h2> Select the notes for the topic you're interested in below.</h2>
-<ul><% @notes.each do |note| %>
-<li><a href="/notes/<%= note.id %>"><%= note.topic %></a></li>
-</ul><% end %>
-<br>
+<h1>Topics</h1>
+<h2> Select from the topics below to be see the notes.</h2>
+<ul style="list-style-type:none;"><% @notes.each do |note| %>
+<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
+<% end %></ul>
 <h3><a href="/notes/new">Create a New note</a></h3>
 
