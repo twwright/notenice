@@ -1,8 +1,8 @@
-class NoteController < ApplicationController
+class NotesController < ApplicationController
 
 #VIEW ALL NOTES
 	get "/notes" do
-		@notes = Drug.all
+		@notes = Note.all
 		erb :"/notes/index"
 	end
 
@@ -11,7 +11,7 @@ class NoteController < ApplicationController
 		if !!session[:user_id]
 			@success_message = session[:creation_successful]
 			session[:creation_successful] = nil
-			@user = User.find(session[:user_id])
+            @user = User.find(session[:user_id])
 			erb :"/notes/new"
 		else
 			redirect to "/"
@@ -19,9 +19,10 @@ class NoteController < ApplicationController
 	end
 
 # ADD NEW DRUG
-	post "/notes" do
-		@note = Note.create(params[:drug])
-		#if !params[:drug][:side_effect].empty?
+    post "/notes" do
+        binding.pry
+        @note = Note.create(params[:note])
+		#if !params[:note][:side_effect].empty?
 		#	@note.user = Owner.create(name: params[:owner][:name])
 		#end
 		@note.save
@@ -44,7 +45,7 @@ class NoteController < ApplicationController
 	patch "/notes/:id" do
 		binding.pry
 		@note = Note.find(params[:id])
-		@note.update(params[:drug])
+		@note.update(params[:note])
 		redirect to "/notes/#{ @note.id }"
 	end
 

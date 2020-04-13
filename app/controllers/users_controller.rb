@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 #CREATE NEW USER FORM SUBMISSION
 	post "/users" do
-		user = User.new(username: params[:username], password: params[:password])
+		user = User.new(params[:user])
 		if user.save
 				session[:user_id] = user.id
 				session[:creation_successful] = []
