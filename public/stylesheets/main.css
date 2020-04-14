@@ -1,11 +1,11 @@
 body {
-	 height: 100vh;
+	 height: 100%;
 	 font-family: 'Open Sans', sans-serif;
 	 margin-top: 80px;
 	 padding: 40px;
  }
 
- h1, h2, h3, h4 {
+ h1  {
 	 font-family: 'Baloo 2', cursive;
  }
  
@@ -20,16 +20,21 @@ body {
 	 align-items: center;
 	 box-shadow: 0 0 25px 0 black;
  }
- 
- header * {
+
+ header img {
+	height: 40px;
+	margin-left: 40px;
+}
+
+ nav * {
 	 display: inline;
  }
  
- header li {
+ nav li {
 	 margin: 20px;
  }
  
- header li a {
+ nav li a {
 	 color: #161f27;
 	 text-decoration: none;
 	 float: center;
@@ -39,7 +44,13 @@ body {
 	 font-size: 24px;
  }
  
- a:hover {
+ nav li a:hover {
+	background-color: rgb(161, 161, 161);
+	color: #161f27;
+	text-decoration: none;
+ }
+
+ body a:hover {
 	background-color: rgb(161, 161, 161);
 	color: #161f27;
 	text-decoration: none;
