@@ -1,1 +1,16 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h2>Update Your Profile</h2>
+<form action="/users/<%= @user.id %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<strong>Username:</strong>
+<p><%= @user.username %></p>
+<label><strong>Name:</strong></label><br>
+<input type="text" name="user[name]" value="<%= @user.name %>"><br>
+<label><strong>Profile:</strong></label>
+<textarea type="text" name="user[profile]"><%= @user.profile %></textarea>
+<input type="submit" value="Save Profile">
+</form>
+<br>
+<details>
+	<summary>A note about password recovery</summary>
+	<p>At the moment, I have no idea how to help you recover your password. If you lose your password, you're out of luck.</p>
+</details>

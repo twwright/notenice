@@ -1,8 +1,9 @@
-<% if @user %>
-	<h1>Welcome <%= @user.username %></h1>
-	<h2>Notes: <% @notes.each do |drug| %></h3>
-		<ul>
-			<li><%= note.topic %></li>
-		</ul><% end %>
-<% end %><br>
-	<h3><a href="/logout">Log Out</a></h4>
+<h1>Profile for <%= @user.name %></h1>
+<p><emphasis><%= @user.profile %></emphasis></p>
+<h2>Authored Notes:</h3>
+<ul style="list-style-type:none;">
+	<% @notes.each do |note| %>
+		<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
+	<% end %>
+</ul>
+<% if has_user_access? %><a href="/users/<%= @user.id%>/edit">Edit Profile</a><% end %>
