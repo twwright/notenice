@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
 		def has_user_access?
 			logged_in? && @user == current_user
 		end
-
+# DELETE DURING REFACTOR
 		def logged_out_error
 			session[:current_errors] = []
 			session[:current_errors] << "Sorry, you must be logged in to view that page."
