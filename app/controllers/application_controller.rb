@@ -25,6 +25,14 @@ class ApplicationController < Sinatra::Base
 			!!session[:user_id]
 		end
 
+		def has_note_access?
+			logged_in? && @note.user == current_user
+		end
+		
+		def has_user_access?
+			logged_in? && @user == current_user
+		end
+
 		def logged_out_error
 			session[:current_errors] = []
 			session[:current_errors] << "Sorry, you must be logged in to view that page."
