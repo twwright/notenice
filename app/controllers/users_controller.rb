@@ -36,16 +36,12 @@ class UsersController < ApplicationController
 	end
 
 	get "/users/:id" do
-		if logged_in?
-			@user = User.find_by_id(session[:user_id])
-			if @user
-				@notes = Note.where(user_id: session[:user_id]) 
-				erb :"/users/profile"
-			else 
-				redirect to "/users/new"
-			end
-		else
-			redirect to "/users/new"
+		@user = User.find_by_id(session[:user_id])
+		if @user
+			@notes = Note.where(user_id: session[:user_id]) 
+			erb :"/users/profile"
+		else 
+			redirect to "/"
 		end
 	end
 
@@ -61,7 +57,9 @@ class UsersController < ApplicationController
 	patch "/users/:id" do
 		@user = User.find(params[:id])
 		if has_user_access?
-			@user.update(params[:user])
+			@user.name = params[:user][:name]
+			@user.profile = params[:user][:profile]
+			@user.save(validate: false)
 			redirect to "/users/#{ @user.id }"
 		else
 			redirect to "/users/#{ @user.id }"

@@ -6,7 +6,7 @@ class NotesController < ApplicationController
 	end
 
 	get "/notes/new" do
-		if !!session[:user_id]
+		if logged_in?
 			@success_message = session[:creation_successful]
 			session[:creation_successful] = nil
 			@user = User.find(session[:user_id])
@@ -18,6 +18,7 @@ class NotesController < ApplicationController
 
 	post "/notes" do
 		@note = Note.create(params[:note])
+		@note.user = current_user
 		@note.save
 		redirect to "notes/#{ @note.id }"
 	end
