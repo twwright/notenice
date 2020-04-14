@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-#CREATE NEW USER PAGE
 	get "/users/new" do
 		if !!session[:user_id]
 			redirect '/notes'
@@ -11,26 +10,24 @@ class UsersController < ApplicationController
 		end
 	end
 
-#CREATE NEW USER FORM SUBMISSION
 	post "/users" do
 		user = User.new(params[:user])
-		if user.save
+		if user.save 
 				session[:user_id] = user.id
 				session[:creation_successful] = []
 				session[:creation_successful] << "Account created successfully!"
-				redirect '/notes/new'
+				redirect '/users/profile'
 		else 
 				session[:failure_message] = user.errors.messages
 				redirect '/users/new'
 		end
 	end
 
-#LOG IN USER FORM SUBMISSION
 	post '/login' do
 		@user = User.find_by(:username => params[:username])
 	 	if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id 
-			redirect to '/notes/new'
+			redirect to '/users/profile'
 		else 
 			session[:failure_message] = []
 			session[:failure_message] << "Failure"
@@ -38,39 +35,51 @@ class UsersController < ApplicationController
 		end
 	end
 
-#VIEW USER'S PROFILE PAGE
-	get "/users/profile" do
+	get "/users/:id" do
 		if logged_in?
 			@user = User.find_by_id(session[:user_id])
 			if @user
 				@notes = Note.where(user_id: session[:user_id]) 
 				erb :"/users/profile"
 			else 
-				erb :new
+				redirect to "/users/new"
 			end
 		else
 			redirect to "/users/new"
 		end
 	end
 
-#EDIT USER'S PROFILE PAGE
 	get "/users/:id/edit" do
-		erb :"/users/edit"
+		@user = User.find(params[:id])
+		if has_user_access?
+			erb :"/users/edit"
+		else
+			redirect to "/users/#{ @user.id }"
+		end
 	end
 
-#EDIT USER'S PROFILE PAGE SUBMISSION
 	patch "/users/:id" do
-		redirect "/users/:id"
+		@user = User.find(params[:id])
+		if has_user_access?
+			@user.update(params[:user])
+			redirect to "/users/#{ @user.id }"
+		else
+			redirect to "/users/#{ @user.id }"
+		end
 	end
 
-#LOG OUT OF PROFILE
 	get '/logout' do
 		session.clear
 		redirect to '/'
 	end
 
-#DELETE USER'S PROFILE
 	delete "/users/:id/delete" do
-		redirect "/users"
+		@user = User.find(params[:id])
+		if has_user_access?
+			@user.delete
+			redirect to "/users/#{ @user.id }"
+		else
+			redirect to "/"
+		end
 	end
 end
