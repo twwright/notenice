@@ -1,7 +1,7 @@
 <h1>Topics</h1>
 <h2> Select from the topics below to be see the notes.</h2>
 <ul style="list-style-type:none;"><% @notes.each do |note| %>
-<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
+<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a> <emphasis>by <a href="/users/<%= note.user.id %><%= note.user.name %></a></emphasis>
 <% end %></ul>
 <h3><a href="/notes/new">Create a New note</a></h3>
 
