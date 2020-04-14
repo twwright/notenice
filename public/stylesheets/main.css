@@ -50,6 +50,10 @@ body {
 	text-decoration: none;
  }
 
+ a#logo:hover {
+     background:none;
+ }
+
  body a:hover {
 	background-color: rgb(161, 161, 161);
 	color: #161f27;
