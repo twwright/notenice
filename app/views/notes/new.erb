@@ -9,12 +9,20 @@
 	<form method="post" action="/notes" id="new_note">
     
 	<label><h3>Note Topic:</h3></label>
-	<input type="text" name="note[topic]" id="note_topic"></input>
+	<input type="text" style="width: 97.5%;" name="note[topic]" id="note_topic"></input>
       
     <label><h3>Notes:</h3></label>
-    <textarea type="text" name="note[content]"></textarea>
+    <textarea type="text" rows="60" name="note[content]"></textarea>
       
     <input type="submit" form="new_note" value="Create note">
 
     </form>
-    </fieldset>
+	 </fieldset>
+	 <br>
+	 <details>
+		 <summary>Markdown Cheat Sheet</summary>
+		 Check out <a href="https://commonmark.org/help/">this cheat sheet</a> to become a Markdown master.
+		 <mark>Warning!</mark> Currently, NiceNote does not support <emphasis>all</emphasis> Markdown features.
+		 If you receive an error, consider presenting your information in a different way. 
+		 We plan to introduce full Markdown features at a later date!
+	 </details>

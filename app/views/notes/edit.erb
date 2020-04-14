@@ -6,13 +6,21 @@
 	<form action="/notes/<%= @note.id %>" method="POST">
 	<input type="hidden" name="_method" value="PATCH">
     
-	<label>New Topic: </label>
-	  <input type="text" name="note[topic]" id="note_topic" value="<%= @note.topic %>"></input>
+	<label>Topic: </label>
+	  <input type="text" style="width: 97.5%;" name="note[topic]" id="note_topic" value="<%= @note.topic %>"></input>
 	  <br>
       
     <label>Notes:</label><br>
-      <textarea type="text" name="note[content]"><%= @note.content %></textarea>
+      <textarea type="text" rows="60" name="note[content]"><%= @note.content %></textarea>
       
     <input type="submit" value="Update note"> 
     </form>
-    </fieldset>
+	 </fieldset>
+	 <br>
+	 <details>
+		 <summary>Markdown Cheat Sheet</summary>
+		 Check out <a href="https://commonmark.org/help/">this cheat sheet</a> to become a Markdown master.
+		 <mark>Warning!</mark> Currently, NiceNote does not support <emphasis>all</emphasis> Markdown features.
+		 If you receive an error, consider presenting your information in a different way. 
+		 We plan to introduce full Markdown features at a later date!
+	 </details>
