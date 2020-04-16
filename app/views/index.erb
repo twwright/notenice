@@ -13,20 +13,25 @@
 		<p>
 			In life, everything is more fun together---even taking notes! 
 		</p>
-	<br>
-	<fieldset>
-	<legend>Log In</legend>
-	<form method="post" action="/login">
-	<label for="username">Username</label>
-	<input type="text" name="username" placeholder="username">
-	<label for="password">Password</label>
-	<input type="password" name="password" placeholder="password">
-	<input type="submit">
-	</form>
-	</fieldset>
-	<% if @failure_message != nil %>
-	<div id="failure_message" style="border: 2px solid red;">
-		<h3> Invalid log-in. Please try again. </h3>
+
+	<% if !logged_in? %>
+		<fieldset>
+		<legend>Log In</legend>
+			<form method="post" action="/login">
+			<label for="username">Username</label>
+			<input type="text" name="username" placeholder="username">
+			<label for="password">Password</label>
+			<input type="password" name="password" placeholder="password">
+			<input type="submit">
+			</form>
+		</fieldset>
+		<% if @failure_message != nil %>
+			<div id="failure_message" style="border: 2px solid red;">
+				<h3> Invalid log-in. Please try again. </h3>
+		<% end %>
+		<h3><a href="/users/new">Sign Up Now</a></h3>
+
+	<% else %>
+		<button onclick="window.location.href = '/notes/new';">Create a note</button>
+
 	<% end %>
-	<br>
-	<h3><a href="/users/new">Sign Up Now</a></h3>
