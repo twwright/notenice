@@ -32,16 +32,19 @@ class ApplicationController < Sinatra::Base
 		def has_user_access?
 			logged_in? && @user == current_user
 		end
-# DELETE DURING REFACTOR
-		def logged_out_error
-			session[:current_errors] = []
-			session[:current_errors] << "Sorry, you must be logged in to view that page."
+
+		def assign_user_instance_by_params
+			@user = User.find(params[:id])
 		end
 
-		def password_error
-			session[:current_errors] = []
-			session[:current_errors] << "Oops, incorrect password. Try again"
-        end
+		def assign_user_instance_by_session
+			@user = User.find(session[:user_id])
+		end
+
+		def assign_note_instance_by_params
+			@note = Note.find(params[:id])
+		end
+
         
         class CodeRayify < Redcarpet::Render::HTML
             def block_code(code, language)

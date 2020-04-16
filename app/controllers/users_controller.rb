@@ -36,17 +36,19 @@ class UsersController < ApplicationController
 	end
 
 	get "/users/:id" do
-		@user = User.find_by_id(session[:user_id])
+		assign_user_instance
 		if @user
-			@notes = Note.where(user_id: session[:user_id]) 
+			@success_message = session[:creation_successful]
+			session[:creation_successful] = nil
+			@notes = Note.where(user_id: params[:id]) 
 			erb :"/users/profile"
-		else 
-			redirect to "/"
+		else
+			redirect to "/users"
 		end
 	end
 
 	get "/users/:id/edit" do
-		@user = User.find(params[:id])
+		assign_user_instance
 		if has_user_access?
 			erb :"/users/edit"
 		else
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
 	end
 
 	patch "/users/:id" do
-		@user = User.find(params[:id])
+		assign_user_instance
 		if has_user_access?
 			@user.name = params[:user][:name]
 			@user.profile = params[:user][:profile]
@@ -72,7 +74,7 @@ class UsersController < ApplicationController
 	end
 
 	delete "/users/:id/delete" do
-		@user = User.find(params[:id])
+		assign_user_instance
 		if has_user_access?
 			@user.delete
 			redirect to "/users/#{ @user.id }"
