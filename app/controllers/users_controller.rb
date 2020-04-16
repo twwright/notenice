@@ -12,13 +12,13 @@ class UsersController < ApplicationController
 
 	post "/users" do
 		@user = User.new(params[:user])
-		if user.save 
-				session[:user_id] = user.id
+		if @user.save 
+				session[:user_id] = @user.id
 				session[:creation_successful] = []
 				session[:creation_successful] << "Account created successfully!"
 				redirect to "/users/#{ @user.id }"
 		else 
-				session[:failure_message] = user.errors.messages
+				session[:failure_message] = @user.errors.messages
 				redirect '/users/new'
 		end
 	end
