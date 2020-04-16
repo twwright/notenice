@@ -11,12 +11,12 @@ class UsersController < ApplicationController
 	end
 
 	post "/users" do
-		user = User.new(params[:user])
+		@user = User.new(params[:user])
 		if user.save 
 				session[:user_id] = user.id
 				session[:creation_successful] = []
 				session[:creation_successful] << "Account created successfully!"
-				redirect '/users/profile'
+				redirect to "/users/#{ @user.id }"
 		else 
 				session[:failure_message] = user.errors.messages
 				redirect '/users/new'
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 		@user = User.find_by(:username => params[:username])
 	 	if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id 
-			redirect to '/users/profile'
+			redirect to "/users/#{ @user.id }"
 		else 
 			session[:failure_message] = []
 			session[:failure_message] << "Failure"
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 	end
 
 	get "/users/:id" do
-		assign_user_instance
+		assign_user_instance_by_params
 		if @user
 			@success_message = session[:creation_successful]
 			session[:creation_successful] = nil
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 	end
 
 	get "/users/:id/edit" do
-		assign_user_instance
+		assign_user_instance_by_params
 		if has_user_access?
 			erb :"/users/edit"
 		else
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 	end
 
 	patch "/users/:id" do
-		assign_user_instance
+		assign_user_instance_by_params
 		if has_user_access?
 			@user.name = params[:user][:name]
 			@user.profile = params[:user][:profile]
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 	end
 
 	delete "/users/:id/delete" do
-		assign_user_instance
+		assign_user_instance_by_params
 		if has_user_access?
 			@user.delete
 			redirect to "/users/#{ @user.id }"
