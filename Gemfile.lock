@@ -43,7 +43,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    pg (1.2.3)
+    pg (0.21.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -115,7 +115,7 @@ DEPENDENCIES
   capybara
   coderay
   database_cleaner
-  pg
+  pg (~> 0.20)
   pry
   rack-test
   rake

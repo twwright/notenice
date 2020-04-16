@@ -12,7 +12,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'redcarpet'
 gem 'coderay'
-gem 'pg'
+gem 'pg', '~> 0.20'
 
 group :test do
   gem 'rspec'
@@ -26,5 +26,5 @@ group :development do
 end
 
 group :production do
- gem 'pg'
+ gem 'pg', '~> 0.20'
 end
