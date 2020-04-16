@@ -18,7 +18,7 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="/notes">Topics</a></li>
 				<% if logged_in? %>
-					<li><a href="/users/profile">My Profile</a></li> 
+					<li><a href="/users/<%= current_user.id %>">My Profile</a></li> 
 					<li><a href="/logout">Log Out</a></li> 
 				<% else %>
 					<li><a href="/users/new">Sign Up</a></li>
