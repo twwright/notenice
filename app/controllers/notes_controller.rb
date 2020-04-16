@@ -28,6 +28,13 @@ class NotesController < ApplicationController
 		erb :'/notes/show'
 	end
 
+	post "/notes/copy/:id" do
+		@note = Note.find(params[:id]).dup
+		@note.user = current_user
+		@note.save!(validate: false)
+		redirect to "notes/#{ @note.id }"
+	end
+
 	get "/notes/:id/edit" do
 		@note = Note.find(params[:id])
 		if has_note_access?
@@ -47,7 +54,7 @@ class NotesController < ApplicationController
 		end
 	end
 
-	delete "/notes/:id/delete" do
+	delete "/notes/:id/" do
 		@note = Note.find(params[:id])
 		if has_note_access?
 			@note.delete

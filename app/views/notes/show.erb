@@ -1,16 +1,20 @@
 <h1><%= @note.topic %></h1>
 <%= markdown(@note.content) %>
 
-<a href="/notes/<%= @note.id %>/edit">Edit note</a> | <a href="/notes/<%= @note.id %>/confirm-delete">Delete note</a>
+<% if has_note_access? %>
+<button onclick="window.location.href = '/notes/<%= @note.id %>/edit';">Edit</button>
 
-<!--	IF HAS_NOTE_ACCESS?
-			EDIT | DELETE
-		ELSIF LOGGED_IN?
-			SAVE | FORK
-		ELSE
-			NOTHING
-		END
--->
+<form action="/notes/<%= @note.id %>" method="post">
+	<input id="hidden" type="hidden" name="_method" value="DELETE">
+	<input type="submit" name="" value="Delete">
+</form>
+
+<% else %>
+<form action="/notes/copy/<%= @note.id %>" method="post">
+	<input type="submit" name="" value="Copy">
+</form>
+
+<% end %>
 
 
 <!-- <% if @confirm_delete %>
