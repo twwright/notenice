@@ -7,9 +7,7 @@ class NotesController < ApplicationController
 
 	get "/notes/new" do
 		if logged_in?
-			@success_message = session[:creation_successful]
-			session[:creation_successful] = nil
-			@user = User.find(session[:user_id])
+			assign_user_instance_by_session
 			erb :"/notes/new"
 		else
 			redirect to "/"
@@ -24,7 +22,7 @@ class NotesController < ApplicationController
 	end
 
 	get "/notes/:id" do
-		@note = Note.find(params[:id])
+		assign_note_instance_by_params
 		erb :'/notes/show'
 	end
 
@@ -36,7 +34,7 @@ class NotesController < ApplicationController
 	end
 
 	get "/notes/:id/edit" do
-		@note = Note.find(params[:id])
+		assign_note_instance_by_params
 		if has_note_access?
 				erb :"/notes/edit"
 		else
@@ -45,7 +43,7 @@ class NotesController < ApplicationController
 	end
 
 	patch "/notes/:id" do
-		@note = Note.find(params[:id])
+		assign_note_instance_by_params
 		if has_note_access?
 			@note.update(params[:note])
 			redirect to "/notes/#{ @note.id }"
@@ -55,7 +53,7 @@ class NotesController < ApplicationController
 	end
 
 	delete "/notes/:id" do
-		@note = Note.find(params[:id])
+		assign_note_instance_by_params
 		if has_note_access?
 			@note.destroy
 			redirect to "/notes"
