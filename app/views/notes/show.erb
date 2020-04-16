@@ -5,14 +5,15 @@
 <button onclick="window.location.href = '/notes/<%= @note.id %>/edit';">Edit</button>
 
 <form action="/notes/<%= @note.id %>" method="post">
-	<input id="hidden" type="hidden" name="_method" value="DELETE">
-	<input type="submit" name="" value="Delete">
+	<input id="hidden" type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete">
 </form>
 
 <% else %>
 <form action="/notes/copy/<%= @note.id %>" method="post">
-	<input type="submit" name="" value="Copy">
+	<input type="submit" value="Copy">
 </form>
+
 
 <% end %>
 

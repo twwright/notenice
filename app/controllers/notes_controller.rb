@@ -54,10 +54,10 @@ class NotesController < ApplicationController
 		end
 	end
 
-	delete "/notes/:id/" do
+	delete "/notes/:id" do
 		@note = Note.find(params[:id])
 		if has_note_access?
-			@note.delete
+			@note.destroy
 			redirect to "/notes"
 		else
 			redirect to "/notes/#{ @note.id }"
