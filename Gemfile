@@ -12,6 +12,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'redcarpet'
 gem 'coderay'
+gem 'pg'
 
 group :test do
   gem 'rspec'
@@ -22,7 +23,6 @@ end
 
 group :development do
  gem 'sqlite3'
- gem "tux"
 end
 
 group :production do
