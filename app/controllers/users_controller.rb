@@ -53,14 +53,13 @@ class UsersController < ApplicationController
 			redirect to "/users/#{ @user.id }"
 		end
 	end
-# CHECK TO SEE IF WE NEED TO BYPASS VALIDATIONS ALWAYS OR ONLY
-# THAT ONE TIME BECAUSE RECORD WAS MADE BEFORE UPDATES?
+
 	patch "/users/:id" do
 		@user = User.find(params[:id])
 		if has_user_access?
 			@user.name = params[:user][:name]
 			@user.profile = params[:user][:profile]
-			@user.save(validate: false)
+			@user.save(validate: false) #SKIPS VALIDATIONS
 			redirect to "/users/#{ @user.id }"
 		else
 			redirect to "/users/#{ @user.id }"

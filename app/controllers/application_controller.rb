@@ -62,3 +62,13 @@ class ApplicationController < Sinatra::Base
         end
 	end
 end
+
+=begin
+FEATURES:
+	- KEEP TRACK OF COPIES VS ORIGINAL
+	- ALLOW PUSH OF COPIES INTO ORIGINAL, GIT-STYLE
+	- ALLOW COLLABORATORS TO BE ADDED TO A NOTE
+	- 
+
+
+=end
