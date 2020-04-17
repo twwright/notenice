@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20200413182426) do
 
-	enable_extension "plpgsql"
-
-	
   create_table "notes", force: :cascade do |t|
     t.string  "topic"
     t.text    "content"

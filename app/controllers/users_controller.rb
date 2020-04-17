@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
 	post "/users" do
 		@user = User.new(params[:user])
-		if @user.save 
+		if @user.save
 				session[:user_id] = @user.id
 				session[:creation_successful] = []
 				session[:creation_successful] << "Account created successfully!"
