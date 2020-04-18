@@ -10,7 +10,7 @@ class NotesController < ApplicationController
 			assign_user_instance_by_session
 			erb :"/notes/new"
 		else
-			redirect to "/"
+			redirect to "/users/new"
 		end
 	end
 
