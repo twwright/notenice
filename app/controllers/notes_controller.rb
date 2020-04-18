@@ -33,8 +33,8 @@ class NotesController < ApplicationController
 			@note.save!(validate: false)
 			redirect to "notes/#{ @note.id }"
 		else 
-			redirect to "users/new
-		end"
+			redirect to "users/new"
+		end
 	end
 
 	get "/notes/:id/edit" do
