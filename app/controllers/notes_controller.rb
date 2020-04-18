@@ -27,10 +27,14 @@ class NotesController < ApplicationController
 	end
 
 	post "/notes/copy/:id" do
-		@note = Note.find(params[:id]).dup
-		@note.user = current_user
-		@note.save!(validate: false)
-		redirect to "notes/#{ @note.id }"
+		if logged_in?
+			@note = Note.find(params[:id]).dup
+			@note.user = current_user
+			@note.save!(validate: false)
+			redirect to "notes/#{ @note.id }"
+		else 
+			redirect to "users/new
+		end"
 	end
 
 	get "/notes/:id/edit" do
