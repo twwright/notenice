@@ -3,32 +3,18 @@
 <label>Username:</label>
 <input type="text" name="user[username]" placeholder="username">
 <label>Password:</label>
-<input type="password" name="user[password]" placeholder="password">
+<input type="password" name="user[password]" placeholder="password"><br>
 <label>Name:</label><br>
-<input type="text" name="user[name]"><br>
+<input type="text" name="user[name]" placeholder="your name" required>
 <label>Profile:</label><br>
-<textarea type="text" name="user[profile]"></textarea>
-<p>
-<input type="hidden" name="terms_of_service" id="terms_of_service" value="false">
-<input type="checkbox" name="terms_of_service" id="terms_of_service" value="true">
-<label for="terms_of_service">I accept the Terms of Service.</label>
-</p>
+<textarea type="text" name="user[profile]" placeholder="tell the world a little bit about yourself"></textarea>
 <input type="submit" form="new_user" value="Sign Up">
 </form><br>
 <% if @failure_message %>
 	<div id="failure" style="border: 2px solid red;">
 		<h3> Sorry... </h3>
 	<% @failure_message.each do |key, value| %>
-		<% if key != :terms_of_service %>
-			<p><%= "#{key.capitalize} #{value[0]}." %></p>
-		<% else %>
-			<p><%= "Terms of service must be accepted." %></p>
-		<% end %>
+		<p><%= "#{key.capitalize} #{value[0]}." %></p>
 	<% end %>	
 	</div>
 <% end %>
-<details>
-	<summary>Read terms of service</summary>
-	<p>NoteNice is for sharing, and sharing means caring. So please be caring and be sharing... got it? <mark>Good!</mark></p>
-</details>
-</form>
