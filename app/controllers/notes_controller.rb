@@ -25,7 +25,6 @@ class NotesController < ApplicationController
 	get "/notes/:id" do
 		assign_note_instance_by_params
 		if @note && ( @note.public || has_note_access? )
-			binding.pry
 			erb :'/notes/show'
 		else
 			set_failure_message
@@ -35,19 +34,10 @@ class NotesController < ApplicationController
 
 	post "/notes/copy/:id" do
 		assign_note_instance_by_params
-		if @note.public #PROTECTS FROM HTTP POST REQUEST INJECTION TO COPY PRIVATE NOTES
-			if logged_in?
-				@note = Note.find(params[:id]).dup
-				@note.user = current_user
-				@note.save!(validate: false)
-				redirect to "notes/#{ @note.id }"
-			else
-				redirect to "users/new"
-			end
-		else
-			set_failure_message
-			redirect to "/notes"
-		end
+		@note = Note.find(params[:id]).dup
+		@note.user = current_user
+		@note.save!(validate: false)
+		redirect to "notes/#{ @note.id }"
 	end
 
 	get "/notes/:id/edit" do
@@ -63,7 +53,6 @@ class NotesController < ApplicationController
 		assign_note_instance_by_params
 		if has_note_access?
 			@note.update(params[:note])
-			binding.pry
 			redirect to "/notes/#{ @note.id }"
 		else
 			redirect "notes/#{ @note.id }"
