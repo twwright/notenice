@@ -1,18 +1,27 @@
-	<h1>Update <%= @note.topic %></h1>
+	<h1>Edit Note</h1>
 
     <fieldset>
-	<legend>Update Note</legend>
 
 	<form action="/notes/<%= @note.id %>" method="POST">
 	<input type="hidden" name="_method" value="PATCH">
     
 	<label>Topic: </label>
 	  <input type="text" style="width: 97.5%;" name="note[topic]" id="note_topic" value="<%= @note.topic %>"></input>
+      
+	  <label><h3>Notes:</h3></label>
+	  <textarea type="text" rows="13" name="note[content]"><%= @note.content %></textarea>
+	 
+	  <label><h3>Privacy:</h3></label>
+	  <select id="public" name="note[public]">
+		  <% if @note.public == true %>
+		 <option value="true" selected>Public</option>
+		 <option value="false">Private</option>
+		 <% else %>
+		 <option value="true">Public</option>
+		 <option value="false" selected>Private</option>
+		 <% end %>
+	  </select>
 	  <br>
-      
-    <label>Notes:</label><br>
-      <textarea type="text" rows="60" name="note[content]"><%= @note.content %></textarea>
-      
     <input type="submit" value="Update note"> 
     </form>
 	 </fieldset>

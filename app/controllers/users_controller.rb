@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 		if !!session[:user_id]
 			redirect '/notes'
 		else
-			@failure_message = session[:failure_message]
-			session[:failure_message] = nil
+			check_failure_message
 			erb :'/users/new'
 		end
 	end
@@ -29,8 +28,7 @@ class UsersController < ApplicationController
 			session[:user_id] = @user.id 
 			redirect to "/users/#{ @user.id }"
 		else 
-			session[:failure_message] = []
-			session[:failure_message] << "Failure"
+			set_failure_message
 			redirect to '/'
 		end
 	end
@@ -43,7 +41,7 @@ class UsersController < ApplicationController
 			@notes = Note.where(user_id: params[:id]) 
 			erb :"/users/profile"
 		else
-			redirect to "/users"
+			redirect to "/"
 		end
 	end
 

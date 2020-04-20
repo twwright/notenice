@@ -1,5 +1,5 @@
-   <fieldset>
-	<legend>Add a New Note</legend>
+<h1>Create a Note</h1>
+<fieldset>
 
 	<form method="post" action="/notes" id="new_note">
     
@@ -7,10 +7,15 @@
 	<input type="text" style="width: 97.5%;" name="note[topic]" id="note_topic"></input>
       
     <label><h3>Notes:</h3></label>
-    <textarea type="text" rows="60" name="note[content]"></textarea>
+    <textarea type="text" rows="13" name="note[content]"></textarea>
 	
+	 <label><h3>Privacy:</h3></label>
+	 <select id="public" name="note[public]">
+		<option value="true">Public</option>
+		<option value="false">Private</option>
+	 </select>
+	 <br>
     <input type="submit" form="new_note" value="Create note">
-
     </form>
 	 </fieldset>
 	 <br>

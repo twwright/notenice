@@ -6,12 +6,25 @@
 
 <h1>Profile for <%= @user.name %></h1>
 <p><emphasis><%= @user.profile %></emphasis></p>
-<h2>Authored Notes:</h3>
+
+<% unless @notes.public.empty? %>
+<h2>Public Notes:</h3>
 <ul style="list-style-type:none;">
-	<% @notes.each do |note| %>
+	<% @notes.public.each do |note| %>
 		<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
 	<% end %>
 </ul>
+<% end %>
+
+<% unless @notes.private.empty? %>
+<h2>Private Notes:</h3>
+<ul style="list-style-type:none;">
+	<% @notes.private.each do |note| %>
+		<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
+	<% end %>
+</ul>
+<% end %>
+
 <% if has_user_access? %><a href="/users/<%= @user.id%>/edit">Edit Profile</a><% end %>
 
 <!-- ADD COPIED VS AUTHORED NOTES, PENDING NOTE PULLS -->
