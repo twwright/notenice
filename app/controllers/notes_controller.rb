@@ -33,13 +33,19 @@ class NotesController < ApplicationController
 	end
 
 	post "/notes/copy/:id" do
-		if logged_in?
-			@note = Note.find(params[:id]).dup
-			@note.user = current_user
-			@note.save!(validate: false)
-			redirect to "notes/#{ @note.id }"
-		else 
-			redirect to "users/new"
+		assign_note_instance_by_params
+		if @note.public #PROTECTS FROM HTTP POST REQUEST INJECTION TO COPY PRIVATE NOTES
+			if logged_in?
+				@note = Note.find(params[:id]).dup
+				@note.user = current_user
+				@note.save!(validate: false)
+				redirect to "notes/#{ @note.id }"
+			else
+				redirect to "users/new"
+			end
+		else
+			set_failure_message
+			redirect to "/notes"
 		end
 	end
 

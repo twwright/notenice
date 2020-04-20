@@ -10,8 +10,7 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get "/" do
-		@failure_message = session[:failure_message]
-		session[:failure_message] = nil
+		check_failure_message
 		@logged_in = !!session[:user_id]
 		erb :index
 	end
@@ -20,7 +19,7 @@ class ApplicationController < Sinatra::Base
 		status 404
 		erb :oops
 	 end
-	 
+
 	helpers do
 		def current_user
 			@user = User.find_by_id(session[:user_id])
