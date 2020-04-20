@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20200420023335) do
     t.string  "topic"
     t.text    "content"
     t.integer "user_id"
-    t.boolean "public_note"
     t.boolean "public"
   end
 
