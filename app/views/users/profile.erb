@@ -4,7 +4,7 @@
 <% end %>	
 	</div>
 
-<h1><%= @user.name %></h1>
+<h1><%= @user.name %>'s profile</h1>
 <p><emphasis><%= @user.profile %></emphasis></p>
 <% unless @notes.public.empty? %>
 <hr>
@@ -24,7 +24,7 @@
 		<% @notes.private.each do |note| %>
 			<li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
 		<% end %>
-	</ul><hr>
+	</ul>
 	<% end %>
 	<hr>
 	<a href="/users/<%= @user.id%>/edit">Edit Profile</a>
