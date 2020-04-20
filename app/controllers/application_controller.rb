@@ -16,6 +16,11 @@ class ApplicationController < Sinatra::Base
 		erb :index
 	end
 
+	not_found do
+		status 404
+		erb :oops
+	 end
+	 
 	helpers do
 		def current_user
 			@user = User.find_by_id(session[:user_id])
@@ -23,6 +28,16 @@ class ApplicationController < Sinatra::Base
 			
 		def logged_in?
 			!!session[:user_id]
+		end
+
+		def set_failure_message
+			session[:failure_message] = []
+			session[:failure_message] << "Failure"
+		end
+
+		def check_failure_message
+			@failure_message = session[:failure_message]
+			session[:failure_message] = nil
 		end
 
 		def has_note_access?
@@ -34,15 +49,15 @@ class ApplicationController < Sinatra::Base
 		end
 
 		def assign_user_instance_by_params
-			@user = User.find(params[:id])
+			@user = User.find_by_id(params[:id])
 		end
 
 		def assign_user_instance_by_session
-			@user = User.find(session[:user_id])
+			@user = User.find_by_id(session[:user_id])
 		end
 
 		def assign_note_instance_by_params
-			@note = Note.find(params[:id])
+			@note = Note.find_by_id(params[:id])
 		end
 
         
