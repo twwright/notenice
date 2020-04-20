@@ -2,6 +2,7 @@ class NotesController < ApplicationController
 
 	get "/notes" do
 		@notes = Note.all
+		check_failure_message
 		erb :"/notes/index"
 	end
 
@@ -23,7 +24,12 @@ class NotesController < ApplicationController
 
 	get "/notes/:id" do
 		assign_note_instance_by_params
-		erb :'/notes/show'
+		if @note && @note.public
+			erb :'/notes/show'
+		else
+			set_failure_message
+			redirect to "/notes"
+		end
 	end
 
 	post "/notes/copy/:id" do
