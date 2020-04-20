@@ -16,14 +16,15 @@
 			<nav>
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="/notes">Topics</a></li>
+					<li><a href="/notes">Notes</a></li>
 				<% if logged_in? %>
+					<li><a href="/notes/new">Create</a></li>
 					<li><a href="/users/<%= current_user.id %>">My Profile</a></li> 
 					<li><a href="/logout">Log Out</a></li> 
 				<% else %>
+					<li><a href="/users</li>">Log In</a>
 					<li><a href="/users/new">Sign Up</a></li>
 				<% end %>
-					<% #if signed in, view profile / if not signed in, sign up or log in %>
 				</ul>
 			</nav>
 		</header>

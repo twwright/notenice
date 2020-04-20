@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413182426) do
+ActiveRecord::Schema.define(version: 20200420023335) do
 
   create_table "notes", force: :cascade do |t|
     t.string  "topic"
     t.text    "content"
     t.integer "user_id"
+    t.boolean "public_note"
+    t.boolean "public"
   end
 
   create_table "users", force: :cascade do |t|

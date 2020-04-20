@@ -1,6 +1,5 @@
-<h1>Topics</h1>
-<h2> Select from the topics below to be see a note.</h2>
-<ul style="list-style-type:none;"><% @notes.each do |note| %>
+<h1>Public Notes</h1>
+<ul style="list-style-type:none;"><% @notes.public.each do |note| %>
 <li><button onclick="window.location.href = '/notes/<%= note.id %>';"><%= note.topic %></button></a>
 	<em>authored by <a href="/users/<%= note.user.id %>"><%= note.user.name %></a></em></li>
 <% end %></ul>

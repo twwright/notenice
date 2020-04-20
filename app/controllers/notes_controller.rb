@@ -50,6 +50,7 @@ class NotesController < ApplicationController
 		assign_note_instance_by_params
 		if has_note_access?
 			@note.update(params[:note])
+			binding.pry
 			redirect to "/notes/#{ @note.id }"
 		else
 			redirect "notes/#{ @note.id }"
