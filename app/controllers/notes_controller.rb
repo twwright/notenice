@@ -24,7 +24,8 @@ class NotesController < ApplicationController
 
 	get "/notes/:id" do
 		assign_note_instance_by_params
-		if @note && @note.public
+		if @note && ( @note.public || has_note_access? )
+			binding.pry
 			erb :'/notes/show'
 		else
 			set_failure_message
