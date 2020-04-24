@@ -33,11 +33,15 @@ class NotesController < ApplicationController
 	end
 
 	post "/notes/copy/:id" do
-		assign_note_instance_by_params
-		@note = Note.find(params[:id]).dup
-		@note.user = current_user
-		@note.save!(validate: false)
-		redirect to "notes/#{ @note.id }"
+		if logged_in?
+			assign_note_instance_by_params
+			@note = Note.find(params[:id]).dup
+			@note.user = current_user
+			@note.save!(validate: false)
+			redirect to "notes/#{ @note.id }"
+		else
+			redirect to "users/new"
+		end
 	end
 
 	get "/notes/:id/edit" do
