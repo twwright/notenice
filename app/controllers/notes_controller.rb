@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 
 	get "/notes" do
-		@notes = Note.all
+		@notes = Note.all.order(:topic)
 		check_failure_message
 		erb :"/notes/index"
 	end
