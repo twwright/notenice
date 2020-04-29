@@ -22,9 +22,9 @@ group :test do
 end
 
 group :development do
- gem "sqlite3", "~> 1.3.6"
+  gem "sqlite3", "~> 1.3.6"
 end
 
 group :production do
- gem 'pg', '~> 0.20'
+  gem 'pg', '~> 0.20'
 end

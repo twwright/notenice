@@ -9,4 +9,3 @@ use Rack::MethodOverride
 use NotesController
 use UsersController
 run ApplicationController
-
