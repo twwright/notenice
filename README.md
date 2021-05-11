@@ -6,7 +6,7 @@ NoteNice is a collaborative note-taking app for sharing and editing notes with y
 ## Running NoteNice
 
 ### Using the web
-This app has been deployed to Heroku, available at [www.notenice.xyz](http://www.notenice.xyz). Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
+This app has been deployed to Heroku, available at [www.notenice.xyz](http://notenice.herokuapp.com/). Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
 
 ### Using a localhost
 
