@@ -23,7 +23,7 @@ class NotesController < ApplicationController
 
   get "/notes/:id" do
     assign_note_instance_by_params
-    if @note && (@note.public || has_note_access?)
+    if @note && ( @note.public || has_note_access? )
       erb :'/notes/show'
     else
       set_failure_message
@@ -34,7 +34,7 @@ class NotesController < ApplicationController
   post "/notes/copy/:id" do
     if logged_in?
       assign_note_instance_by_params
-      @note = Note.find(params[:id]).dup
+      @note = Note.find( params[:id] ).dup
       @note.user = current_user
       @note.save!(validate: false)
       redirect to "notes/#{@note.id}"
