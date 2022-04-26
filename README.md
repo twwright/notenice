@@ -1,4 +1,4 @@
-# [![NoteNice - because sharing is caring](https://raw.githubusercontent.com/twwright/notenice/master/public/images/NoteNice.png)](http://www.notenice.xyz)
+# [![NoteNice - because sharing is caring](https://raw.githubusercontent.com/twwright/notenice/master/public/images/NoteNice.png)](notenice.herokuapp.com)
 
 ## __NoteNice__ is a web app for Flatiron School written in Ruby using Sinatra, ActiveRecord, SQLite3, and PostgreSQL.
 NoteNice is a collaborative note-taking app for sharing and editing notes with your friends that uses `redcarpet` markdown formatting. Currently, NoteNice supports copying notes as well as making public or private notes. Future features will include more robust git-like version control to keep everyone on the same page, including requesting editing permission and saving your favorites.
@@ -6,7 +6,7 @@ NoteNice is a collaborative note-taking app for sharing and editing notes with y
 ## Running NoteNice
 
 ### Using the web
-This app has been deployed to Heroku, available at [www.notenice.xyz](http://notenice.herokuapp.com/). Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
+This app has been deployed to Heroku, available at [notenice.herokuapp.com](http://notenice.herokuapp.com/). Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
 
 ### Using a localhost
 
