@@ -12,7 +12,6 @@ gem 'bcrypt'
 gem 'tux'
 gem 'redcarpet'
 gem 'coderay'
-gem 'pg', '~> 0.20'
 
 group :test do
   gem 'rspec'
