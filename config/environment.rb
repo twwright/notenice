@@ -30,12 +30,22 @@ configure :production do
       :encoding => 'utf8'
     )
   else
-    # Fallback to SQLite for production if no DATABASE_URL is set
-    # Note: You should set up a PostgreSQL database for production
+    # Fallback to in-memory SQLite for production if no DATABASE_URL is set
+    # WARNING: This is temporary storage only - data will be lost on each deployment
+    # Set up a PostgreSQL database and configure DATABASE_URL for persistent storage
     ActiveRecord::Base.establish_connection(
       :adapter => "sqlite3",
-      :database => "db/production.sqlite"
+      :database => ":memory:"
     )
+    
+    # Auto-run migrations for in-memory database
+    require_relative '../db/migrate/20200413182411_create_users.rb'
+    require_relative '../db/migrate/20200413182426_create_notes.rb'
+    require_relative '../db/migrate/20200420023335_add_public_to_notes.rb'
+    
+    CreateUsers.new.change
+    CreateNotes.new.change
+    AddPublicToNotes.new.change
   end
 end
 
