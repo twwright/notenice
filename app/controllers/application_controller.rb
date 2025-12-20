@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, ENV['SESSION_SECRET'] || "saltyhashes"
+    set :session_secret, ENV['SESSION_SECRET'] || "4d494a59ea29023e365bd6ea934cc5762e49b4b6394ed5efd138c1f94be955c9"
   end
 
   get "/" do
