@@ -1,0 +1,27 @@
+# Development files
+db/*.sqlite
+db/development.sqlite
+db/test.sqlite
+
+# Test files
+spec/
+test/
+
+# Development tools
+.git/
+.gitignore
+*.log
+tmp/
+log/
+
+# Documentation
+README.md
+CODE_OF_CONDUCT.md
+LICENSE.md
+spec.md
+_config.yml
+
+# Development dependencies
+.bundle/
+vendor/bundle/
+
