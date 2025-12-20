@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :username, presence: true, uniqueness: true, length: { minimum: 3 }
   # validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, length: { in: 6..20 }
+  validates :password, length: { in: 6..20 }, on: :create
 end
