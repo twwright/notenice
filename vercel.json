@@ -8,6 +8,22 @@
   ],
   "routes": [
     {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/public/images/$1"
+    },
+    {
+      "src": "/stylesheets/(.*)",
+      "dest": "/public/stylesheets/$1"
+    },
+    {
+      "src": "/javascripts/(.*)",
+      "dest": "/public/javascripts/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "config.ru"
     }
