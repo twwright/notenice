@@ -2,33 +2,28 @@ source 'https://rubygems.org'
 
 ruby "~> 3.3.x"
 
-gem 'sinatra'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'sinatra', '~> 3.0'
+gem 'activerecord', '~> 7.0'
+gem 'sinatra-activerecord', '~> 2.0'
 gem 'rake'
 gem 'require_all'
 gem 'bcrypt'
 gem 'redcarpet'
 gem 'coderay'
 gem 'rack'
+gem 'puma'
 
 group :test do
   gem 'rspec'
-  gem 'capybara'
   gem 'rack-test'
-  gem 'database_cleaner'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
-  gem "sqlite3", "~> 1.3.6"
-  gem 'thin'
-  gem 'shotgun'
+  gem "sqlite3", "~> 1.7"
   gem 'pry'
-  gem 'tux'
 end
 
 group :production do
-  gem 'pg', '~> 0.20'
-  # SQLite3 also available in production as fallback
-  gem "sqlite3", "~> 1.3.6"
+  gem 'pg', '~> 1.5'
 end
