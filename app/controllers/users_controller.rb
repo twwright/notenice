@@ -9,14 +9,21 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    @user = User.new(params[:user])
-    if @user.save
-      session[:user_id] = @user.id
-      session[:creation_successful] = []
-      session[:creation_successful] << "Account created successfully!"
-      redirect to "/users/#{@user.id}"
-    else
-      session[:failure_message] = @user.errors.messages
+    begin
+      @user = User.new(params[:user])
+      if @user.save
+        session[:user_id] = @user.id
+        session[:creation_successful] = []
+        session[:creation_successful] << "Account created successfully!"
+        redirect to "/users/#{@user.id}"
+      else
+        session[:failure_message] = @user.errors.messages
+        redirect '/users/new'
+      end
+    rescue => e
+      puts "Error creating user: #{e.message}"
+      puts e.backtrace
+      session[:failure_message] = { error: ["An error occurred. Please try again."] }
       redirect '/users/new'
     end
   end
