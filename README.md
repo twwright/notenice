@@ -6,11 +6,11 @@ NoteNice is a collaborative note-taking app for sharing and editing notes with y
 ## Running NoteNice
 
 ### Using the web
-This app can be deployed to Vercel or Heroku. 
+This app is currently deployed on **Vercel** with **Neon Postgres** at [notenice.vercel.app](https://notenice.vercel.app).
 
-**Deploy to Vercel:** See [QUICKSTART_VERCEL.md](QUICKSTART_VERCEL.md) for a 5-minute deployment guide, or [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for comprehensive documentation.
+**Note:** This app was originally deployed to Heroku at [notenice.herokuapp.com](http://notenice.herokuapp.com/), but has been migrated to Vercel for improved performance and modern serverless architecture.
 
-The app was originally deployed to Heroku at [notenice.herokuapp.com](http://notenice.herokuapp.com/). Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
+Deployment environments and groups have been configured using PostgreSQL adapters in this repo, although SQLite3 is still being used for development.
 
 ### Using a localhost
 
